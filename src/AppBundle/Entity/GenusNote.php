@@ -7,6 +7,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -43,10 +44,15 @@ class GenusNote
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Genus")
+     * @ORM\ManyToOne(targetEntity="Genus", inversedBy="notes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $genus;
+
+    public function __construct()
+    {
+        $this->note = new ArrayCollection();
+    }
 
     /**
      * @return mixed

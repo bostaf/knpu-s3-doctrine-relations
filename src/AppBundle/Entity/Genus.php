@@ -42,6 +42,11 @@ class Genus
      */
     private $isPublished = true;
 
+    /**
+     * @ORM\OneToMany(targetEntity="GenusNote", mappedBy="genus")
+     */
+    private $notes;
+
     public function getName()
     {
         return $this->name;
@@ -90,5 +95,13 @@ class Genus
     public function setIsPublished($isPublished)
     {
         $this->isPublished = $isPublished;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNotes()
+    {
+        return $this->notes;
     }
 }
