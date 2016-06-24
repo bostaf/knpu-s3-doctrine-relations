@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -44,6 +45,7 @@ class Genus
 
     /**
      * @ORM\OneToMany(targetEntity="GenusNote", mappedBy="genus")
+     * @ORM\OrderBy({"ceratedAt"="DESC"})
      */
     private $notes;
 
@@ -98,7 +100,7 @@ class Genus
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection|GenusNote[]
      */
     public function getNotes()
     {
